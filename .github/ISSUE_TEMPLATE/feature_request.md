@@ -1,21 +1,30 @@
 ---
-name: Feature Request
-about: Propose a new feature or architectural enhancement
-title: '[FEATURE] '
-labels: 'enhancement'
-assignees: ''
+name: AI-Native Feature Request
+about: Standard template enforcing UI/Data/API split and AI constraints
+title: '[FEAT]: '
+labels: 'enhancement, pending-dor'
 ---
 
-### 1. Problem Statement & User Value
-Describe the user need or problem this feature solves.
+### 1. Business Intent & Scope
+- **Problem Statement:**
+- **In Scope:**
+- **Out of Scope (Non-Goals):**
 
-### 2. Scope & Technical Requirements
-- [ ] Requirement 1
-- [ ] Requirement 2
+### 2. Architectural Decomposition
+- **UI Layer:** (Screens, input fields, validation rules, error states)
+- **Data Layer:** (Entities, schema changes, constraints, PII classification)
+- **API Layer:** (REST endpoints, HTTP verbs, payload specs, status codes, authz)
 
-### 3. Non-Goals
-Specify what is explicitly out of scope for this task.
+### 3. AI Copilot Execution Constraints
+- **Target Tech Stack:** Python 3.11 / FastAPI / Pydantic v2 / PostgreSQL
+- **Allowed Directory Scope:** `src/modules/work_orders/`, `tests/unit/`
+- **Dependency Guardrail:** Do NOT introduce external third-party dependencies without architectural review.
 
-### 4. Acceptance Criteria
-- [ ] Given X, when Y, then Z.
-- [ ] Unit test coverage >= 80%.
+### 4. Acceptance Criteria (Gherkin-lite)
+- [ ] **Given** an authenticated user, **When** submitting valid WO payload, **Then** return HTTP 201 Created.
+- [ ] **Given** invalid PII inputs, **When** submitting, **Then** return HTTP 422 with field-level validation errors.
+
+### 5. Definition of Ready (DoR) Checklist
+- [ ] UI/Data/API split strictly defined.
+- [ ] Non-goals explicitly declared.
+- [ ] PII & Security classification stated.
